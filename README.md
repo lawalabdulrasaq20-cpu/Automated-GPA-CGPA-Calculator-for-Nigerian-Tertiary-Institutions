@@ -1,0 +1,2 @@
+# Automated-GPA-CGPA-Calculator-for-Nigerian-Tertiary-Institutions
+Design and implement a web-based academic result management system that allows students to enter their registered courses and corresponding units while the system automatically calculates GPA and CGPA using the Nigerian grading system. The platform reduces calculation errors, saves time, and helps students track academic performance efficiently.
