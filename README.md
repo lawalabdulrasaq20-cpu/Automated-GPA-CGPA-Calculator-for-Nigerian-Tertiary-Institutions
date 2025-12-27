@@ -73,4 +73,5 @@ Reduces human error in grade computation
 
 Offers instant academic feedback
 
-Improves transparency and confidence in results
+Improves transparency and confidence in results<img width="1366" height="768" alt="Screenshot (367)" src="https://github.com/user-attachments/assets/20bd6c3d-05b6-4615-9461-c1c93b971b71" />
+
