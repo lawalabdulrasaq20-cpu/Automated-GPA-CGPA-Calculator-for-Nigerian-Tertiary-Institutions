@@ -1,0 +1,65 @@
+# GPA Calculator .htaccess
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Set base directory
+RewriteBase /
+
+# Prevent directory browsing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(env|json|lock|md|yml|yaml)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^composer\.(json|lock)$">
+    Require all denied
+</FilesMatch>
+
+<Files ".env">
+    Require all denied
+</Files>
+
+# Protect app and config directories
+RewriteRule ^app/ - [F,L]
+RewriteRule ^config/ - [F,L]
+RewriteRule ^vendor/ - [F,L]
+RewriteRule ^database/ - [F,L]
+
+# Redirect to public directory
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
+
+# Handle PHP files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php [QSA,L]
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com; font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com; img-src 'self' data:;"
+</IfModule>
+
+# PHP settings
+php_flag display_errors Off
+php_flag display_startup_errors Off
+php_flag log_errors On
+php_flag log_errors_max_len 1024
+php_flag ignore_repeated_errors Off
+php_flag ignore_repeated_source Off
+php_flag report_memleaks On
+php_flag track_errors Off
+
+# Error handling
+ErrorDocument 400 /error.php
+ErrorDocument 401 /error.php
+ErrorDocument 403 /error.php
+ErrorDocument 404 /error.php
+ErrorDocument 500 /error.php

@@ -1,0 +1,111 @@
+/* Custom styles for GPA Calculator */
+
+/* Grade badge colors */
+.grade-A { background-color: #10b981; color: white; }
+.grade-B { background-color: #3b82f6; color: white; }
+.grade-C { background-color: #f59e0b; color: white; }
+.grade-D { background-color: #6b7280; color: white; }
+.grade-E { background-color: #9ca3af; color: white; }
+.grade-F { background-color: #ef4444; color: white; }
+
+/* Custom animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Focus styles */
+.focus-ring {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-width: 2px;
+    --tw-ring-offset-color: #fff;
+    --tw-ring-color: #6366f1;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+/* Hover effects */
+.hover-lift {
+    transition: transform 0.2s ease-in-out;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+}
+
+/* Loading spinner */
+.spinner {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #6366f1;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive table */
+@media (max-width: 640px) {
+    .responsive-table {
+        font-size: 0.875rem;
+    }
+    
+    .responsive-table th,
+    .responsive-table td {
+        padding: 0.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .print-only {
+        display: block !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .grade-A { background-color: #059669; }
+    .grade-B { background-color: #2563eb; }
+    .grade-C { background-color: #d97706; }
+    .grade-D { background-color: #4b5563; }
+    .grade-E { background-color: #6b7280; }
+    .grade-F { background-color: #dc2626; }
+}
