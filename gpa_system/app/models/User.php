@@ -3,22 +3,6 @@
 // Load database config / helper
 require_once __DIR__ . '/../../config/database.php';
 
-class User
-{
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = db();
-    }
-
-    public function create(array $data): int
-    {
-        $stmt = $this->db->prepare(
-            "INSERT INTO users (name, email, password, matric_number, department, level)
-             VALUES (?, ?, ?, ?, ?, ?)"
-        );
-
         $stmt->execute([
             $data['name'],
             $data['email'],
